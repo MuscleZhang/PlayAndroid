@@ -22,4 +22,9 @@
         android:name="com.zjj.playandroid.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_knowledge"
+        android:name="com.zjj.playandroid.ui.knowledge.KnowledgeFragment"
+        android:label="@string/title_knowledge"
+        tools:layout="@layout/fragment_knowledge" />
 </navigation>

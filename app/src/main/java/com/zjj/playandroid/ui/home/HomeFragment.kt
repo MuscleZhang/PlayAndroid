@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.zjj.playandroid.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.zjj.playandroid.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -31,10 +30,16 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val data = mutableListOf<HomeBean>()
+        data.add(HomeBean("标题1", arrayListOf("标签1","标签2", "标签3")))
+        data.add(HomeBean("标题2", arrayListOf("标签1","标签2", "标签3")))
+        data.add(HomeBean("标题3", arrayListOf("标签1","标签2", "标签3")))
+        data.add(HomeBean("标题4", arrayListOf("标签1","标签2", "标签3")))
+        val rvLayout: RecyclerView = binding.rvHome
+        val layoutManager = LinearLayoutManager(context)
+        rvLayout.layoutManager = layoutManager
+        rvLayout.adapter = HomeAdapter(data)
+        rvLayout.addItemDecoration(BlackItemDecoration(context))
         return root
     }
 

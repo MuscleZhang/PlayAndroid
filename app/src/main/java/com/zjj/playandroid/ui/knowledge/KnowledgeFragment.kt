@@ -1,4 +1,4 @@
-package com.zjj.playandroid.ui.notifications
+package com.zjj.playandroid.ui.knowledge
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.zjj.playandroid.databinding.FragmentNotificationsBinding
+import com.zjj.playandroid.databinding.FragmentKnowledgeBinding
+import com.zjj.playandroid.ui.notifications.KnowledgeViewModel
 
-class NotificationsFragment : Fragment() {
+class KnowledgeFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var notificationsViewModel: KnowledgeViewModel
+    private var _binding: FragmentKnowledgeBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,9 +26,9 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(KnowledgeViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentKnowledgeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications

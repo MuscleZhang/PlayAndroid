@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="@dimen/margin_16"
+    android:background="@color/background_gray">
+    <!--文章标签-->
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/label_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--文章类型-->
+    <TextView
+        android:id="@+id/article_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="文章类型"
+        app:layout_constraintTop_toBottomOf="@id/label_layout"/>
+    <!--文章标题-->
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_type"
+        android:layout_marginTop="@dimen/padding_5"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="文章标题"
+        style="@style/textview_primary" />
+    <!--作者-->
+    <TextView
+        android:id="@+id/article_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/article_time"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/article_title"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="作者：张诺然"
+        />
+    <!--时间-->
+    <TextView
+        android:id="@+id/article_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/article_author"
+        app:layout_constraintEnd_toStartOf="@id/article_iv_collect"
+        app:layout_constraintTop_toTopOf="@id/article_author"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:text="2022-10-02"
+        android:layout_marginStart="@dimen/margin_8"
+        />
+    <!--收藏图标-->
+    <ImageView
+        android:id="@+id/article_iv_collect"
+        android:layout_width="@dimen/image_view_size_24"
+        android:layout_height="@dimen/image_view_size_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/article_time"
+        app:layout_constraintBottom_toBottomOf="@id/article_time"
+        android:src="@drawable/ic_uncollected"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
