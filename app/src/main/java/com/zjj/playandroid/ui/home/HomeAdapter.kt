@@ -21,9 +21,9 @@ class HomeAdapter(private val data: MutableList<HomeBean>): RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         holder.title.text = data[position].title
-        for (label in data[position].labels) {
+        for (label in data[position].tags) {
             val labelView = LayoutInflater.from(context).inflate(R.layout.home_item_label, null)
-            labelView.findViewById<TextView>(R.id.tv_label).text = label
+            labelView.findViewById<TextView>(R.id.tv_label).text = label.name
             holder.labels.addView(labelView)
 
         }
