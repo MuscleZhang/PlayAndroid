@@ -30,12 +30,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val data = mutableListOf<HomeBean>()
         val data = ArrayList<HomeBean>()
-//        data.add(HomeBean("标题1", arrayListOf("标签1","标签2", "标签3")))
-//        data.add(HomeBean("标题2", arrayListOf("标签1","标签2", "标签3")))
-//        data.add(HomeBean("标题3", arrayListOf("标签1","标签2", "标签3")))
-//        data.add(HomeBean("标题4", arrayListOf("标签1","标签2", "标签3")))
         val rvLayout: RecyclerView = binding.rvHome
         val layoutManager = LinearLayoutManager(context)
         rvLayout.layoutManager = layoutManager

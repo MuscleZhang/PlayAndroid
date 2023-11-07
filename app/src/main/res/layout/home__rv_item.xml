@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingHorizontal="@dimen/margin_16"
-    android:background="@color/background_gray">
+    android:background="#ffffff"
+    android:paddingHorizontal="@dimen/margin_16">
     <!--文章标签-->
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/label_layout"
@@ -49,8 +49,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintWidth_default="wrap"
         app:layout_constraintHorizontal_bias="0"
-        android:text="作者：张诺然"
-        />
+        android:text="作者：张诺然" />
     <!--时间-->
     <TextView
         android:id="@+id/article_time"

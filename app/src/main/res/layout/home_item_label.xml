@@ -13,7 +13,6 @@
         tools:text="标签"
         android:textSize="@dimen/text_size_16"
         android:paddingHorizontal="@dimen/padding_10"
-        android:paddingVertical="@dimen/padding_5"
-        />
+        android:paddingVertical="@dimen/padding_5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
