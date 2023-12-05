@@ -6,16 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.WindowManager
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zjj.playandroid.R
 import com.zjj.playandroid.databinding.FragmentKnowledgeBinding
 import com.zjj.playandroid.ui.notifications.KnowledgeViewModel
-import com.zjj.playandroid.view.FloatActionWindow
 
 class KnowledgeFragment : Fragment() {
     val TAG = "KnowledgeFragment"
@@ -37,10 +34,10 @@ class KnowledgeFragment : Fragment() {
         _binding = FragmentKnowledgeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textKnowledge
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = binding.textKnowledge
+//        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         val btnClick = binding.btnClick
         binding.btnClick.setOnClickListener {
             addToolView()
@@ -66,12 +63,29 @@ class KnowledgeFragment : Fragment() {
         Log.d(TAG, "add view")
         val windowManager = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val view = LayoutInflater.from(context).inflate(R.layout.window_float, null)
-//        val view = FloatActionWindow(context)
+
+//            val view = FloatActionWindow(requireContext())
+
         val layoutParams = WindowManager.LayoutParams().apply {
-            width = 100
-            height = 100
+            width = WRAP_CONTENT
+            height = WRAP_CONTENT
         }
+//        view.setCallback(object : MoveCallback {
+//            override fun onMove(x: Int, y: Int, dx: Int, dy: Int) {
+//                layoutParams.x = x
+//                layoutParams.y = y
+//                windowManager.updateViewLayout(view, layoutParams)
+//            }
+//        })
+
         windowManager.addView(view, layoutParams)
+
+//        windowManager.updateViewLayout(view, )
+
+//        val contentView = this.window.decorView.findViewById(android.R.id.content) as FrameLayout
+//        contentView.addView(FloatView(this))
+
+
 //        val params = WindowManager.LayoutParams(
 //            ViewGroup.LayoutParams.WRAP_CONTENT,
 //            ViewGroup.LayoutParams.WRAP_CONTENT
