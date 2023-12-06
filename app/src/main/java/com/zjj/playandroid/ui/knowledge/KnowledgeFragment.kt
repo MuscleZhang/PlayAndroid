@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.zjj.playandroid.R
 import com.zjj.playandroid.databinding.FragmentKnowledgeBinding
 import com.zjj.playandroid.ui.notifications.KnowledgeViewModel
+import com.zjj.playandroid.view.FloatActionWindow
+import com.zjj.playandroid.view.MoveCallback
 
 class KnowledgeFragment : Fragment() {
     val TAG = "KnowledgeFragment"
@@ -62,21 +64,27 @@ class KnowledgeFragment : Fragment() {
     fun addToolView() {
         Log.d(TAG, "add view")
         val windowManager = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val view = LayoutInflater.from(context).inflate(R.layout.window_float, null)
+//        val view = LayoutInflater.from(context).inflate(R.layout.window_float, null)
 
-//            val view = FloatActionWindow(requireContext())
+            val view = FloatActionWindow(requireContext())
 
-        val layoutParams = WindowManager.LayoutParams().apply {
-            width = WRAP_CONTENT
-            height = WRAP_CONTENT
-        }
-//        view.setCallback(object : MoveCallback {
-//            override fun onMove(x: Int, y: Int, dx: Int, dy: Int) {
-//                layoutParams.x = x
-//                layoutParams.y = y
-//                windowManager.updateViewLayout(view, layoutParams)
-//            }
-//        })
+//        val layoutParams = WindowManager.LayoutParams().apply {
+//            width = WRAP_CONTENT
+//            height = WRAP_CONTENT
+//        }
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.width = WRAP_CONTENT
+        layoutParams.height = WRAP_CONTENT
+        view.setCallback(object : MoveCallback {
+            override fun onMove(x: Int, y: Int, dx: Int, dy: Int) {
+                Log.d(TAG, "before onMove" + layoutParams.x + "," + layoutParams.y)
+                layoutParams.x += dx
+                layoutParams.y += dy
+
+                Log.d(TAG, "after onMove" + layoutParams.x + "," + layoutParams.y)
+                windowManager.updateViewLayout(view, layoutParams)
+            }
+        })
 
         windowManager.addView(view, layoutParams)
 

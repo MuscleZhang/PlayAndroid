@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.widget.FrameLayout
+import com.zjj.playandroid.LogUtils
 import com.zjj.playandroid.R
 
 
@@ -33,8 +34,12 @@ class FloatActionWindow : FrameLayout {
     }
 
     private fun init(context: Context?) {
-        val childView = LayoutInflater.from(context).inflate(R.layout.window_float, null)
-        addView(childView)
+        val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+////        lp.topMargin = mToolBarHeight
+        layoutParams = lp
+        LayoutInflater.from(context).inflate(R.layout.window_float, this)
+
+//        addView(childView)
 
     }
 
