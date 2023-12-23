@@ -1,7 +1,11 @@
 package com.zjj.playandroid.ui.knowledge
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -62,19 +66,23 @@ class KnowledgeFragment : Fragment() {
     }
 
     fun addToolView() {
+        if(checkPermission().not()) {
+            return;
+        }
         Log.d(TAG, "add view")
         val windowManager = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-//        val view = LayoutInflater.from(context).inflate(R.layout.window_float, null)
-
             val view = FloatActionWindow(requireContext())
 
-//        val layoutParams = WindowManager.LayoutParams().apply {
-//            width = WRAP_CONTENT
-//            height = WRAP_CONTENT
-//        }
+
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.width = WRAP_CONTENT
         layoutParams.height = WRAP_CONTENT
+        layoutParams.flags =  WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+        } else {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_PHONE
+        }
         view.setCallback(object : MoveCallback {
             override fun onMove(x: Int, y: Int, dx: Int, dy: Int) {
                 Log.d(TAG, "before onMove" + layoutParams.x + "," + layoutParams.y)
@@ -104,6 +112,29 @@ class KnowledgeFragment : Fragment() {
 //            view.layoutParams = params
 //        windowManager.addView(view, layoutParams)
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == 0) {
+            addToolView();
+        }
+    }
+
+    fun checkPermission(): Boolean {
+        return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (Settings.canDrawOverlays(context)) {
+                true
+            } else {
+                activity?.startActivityForResult(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
+                    data = Uri.parse("package: ${activity?.packageName}")
+                }, 0)
+
+                false
+            }
+        } else {
+            false
+        }
     }
 
 }
