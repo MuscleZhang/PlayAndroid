@@ -39,22 +39,11 @@ class KnowledgeFragment : Fragment() {
 
         _binding = FragmentKnowledgeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-//        val textView: TextView = binding.textKnowledge
-//        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         val btnClick = binding.btnClick
         binding.btnClick.setOnClickListener {
             addToolView()
 
         }
-//        btnClick.setOnClickListener(object : View.OnClickListener {
-//            override fun onClick(v: View?) {
-//                Log.d(TAG, "click")
-//                addToolView()
-//            }
-//        })
         btnClick.text = "clicktext"
 
         return root
@@ -95,23 +84,6 @@ class KnowledgeFragment : Fragment() {
         })
 
         windowManager.addView(view, layoutParams)
-
-//        windowManager.updateViewLayout(view, )
-
-//        val contentView = this.window.decorView.findViewById(android.R.id.content) as FrameLayout
-//        contentView.addView(FloatView(this))
-
-
-//        val params = WindowManager.LayoutParams(
-//            ViewGroup.LayoutParams.WRAP_CONTENT,
-//            ViewGroup.LayoutParams.WRAP_CONTENT
-//        )
-//        params.width = 100
-//        params.height = 100
-//            params.type = WindowManager.LayoutParams.T
-//            view.layoutParams = params
-//        windowManager.addView(view, layoutParams)
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
