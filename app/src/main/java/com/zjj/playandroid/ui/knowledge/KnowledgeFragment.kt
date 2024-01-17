@@ -1,5 +1,6 @@
 package com.zjj.playandroid.ui.knowledge
 
+import android.app.AppOpsManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zjj.playandroid.R
 import com.zjj.playandroid.databinding.FragmentKnowledgeBinding
+import com.zjj.playandroid.service.FloatWindowService
 import com.zjj.playandroid.ui.notifications.KnowledgeViewModel
 import com.zjj.playandroid.view.FloatActionWindow
 import com.zjj.playandroid.view.MoveCallback
@@ -41,7 +43,8 @@ class KnowledgeFragment : Fragment() {
         val root: View = binding.root
         val btnClick = binding.btnClick
         binding.btnClick.setOnClickListener {
-            addToolView()
+//            activity?.startService(Intent(activity, FloatWindowService::class.java))
+//            addToolView()
 
         }
         btnClick.text = "clicktext"
@@ -89,23 +92,32 @@ class KnowledgeFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == 0) {
-            addToolView();
+            addToolView()
         }
     }
 
+    val OP_SYSTEM_ALERT_WINDOW = 24
     fun checkPermission(): Boolean {
         return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (Settings.canDrawOverlays(context)) {
                 true
             } else {
-                activity?.startActivityForResult(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
-                    data = Uri.parse("package: ${activity?.packageName}")
-                }, 0)
-
+                activity?.startActivityForResult(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${activity?.packageName}")), 0)
                 false
             }
         } else {
-            false
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                val opsManager = context?.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+                val clazz = AppOpsManager::class.java
+                try {
+                    var method = clazz.getDeclaredMethod("checkOp",
+                        Int::class.java, Int::class.java, String::class.java)
+                    return AppOpsManager.MODE_ALLOWED == method.invoke(opsManager, OP_SYSTEM_ALERT_WINDOW, android.os.Process.myUid(), context?.packageName)
+                } catch (e: Exception) {
+                    Log.e(TAG, "checkPermission: %s", e)
+                }
+            }
+            true
         }
     }
 
