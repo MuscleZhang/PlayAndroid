@@ -47,8 +47,7 @@ class FloatActionWindow : FrameLayout {
     var mActionY = 0
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-
-
+//        var
         if (event != null) {
             when (event.action) {
 
@@ -62,6 +61,9 @@ class FloatActionWindow : FrameLayout {
                     Log.d(TAG, "ACTION_MOVE" + event.rawX + "," + mActionX)
                     val dx = (event.rawX - mActionX).toInt()
                     val dy = (event.rawY - mActionY).toInt()
+                    if (dx > 100 || dy > 100) {
+
+                    }
                     offsetTopAndBottom(dy)
                     offsetLeftAndRight(dx)
                     mActionX = event.rawX.toInt()
@@ -77,7 +79,8 @@ class FloatActionWindow : FrameLayout {
             }
         }
 
-        return true
+        // 如果设置成true， 会导致无法点击
+        return super.onTouchEvent(event)
     }
 
     private var mCallback: MoveCallback? = null

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_kit"
+    app:startDestination="@id/kitMainFragment">
+
+    <fragment
+        android:id="@+id/kitMainFragment"
+        android:name="com.zjj.playandroid.kit.fragment.KitMainFragment"
+        android:label="fragment_kit_main"
+        tools:layout="@layout/fragment_kit_main" >
+        <action
+            android:id="@+id/action_kitMainFragment_to_viewDemoFragment"
+            app:destination="@id/viewDemoFragment"
+            app:enterAnim="@anim/adv_trans_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewDemoFragment"
+        android:name="com.zjj.playandroid.kit.fragment.ViewDemoFragment"
+        android:label="fragment_view_demo"
+        tools:layout="@layout/fragment_view_demo" />
+</navigation>

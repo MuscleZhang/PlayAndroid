@@ -2,10 +2,14 @@ package com.zjj.playandroid.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.Log
+import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.view.WindowManager
+import com.zjj.playandroid.kit.KitActivity
 import com.zjj.playandroid.view.FloatActionWindow
 import com.zjj.playandroid.view.MoveCallback
 
@@ -46,6 +50,8 @@ object FlowWindowManager {
                     windowManager.updateViewLayout(view, layoutParams)
                 }
             })
+            view.setOnClickListener { var intent = Intent(context, KitActivity::class.java)
+            context.startActivity(intent)}
 
             windowManager.addView(view, layoutParams)
         }
