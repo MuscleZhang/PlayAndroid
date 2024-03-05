@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.zjj.playandroid.R
+import com.zjj.playandroid.kit.bean.CollapseRvBean
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,7 +18,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ViewDemoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ViewDemoFragment : Fragment() {
+class ViewDemoFragment : BaseCollapseItemRvFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -30,13 +31,22 @@ class ViewDemoFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_demo, container, false)
+    override fun getData():ArrayList<CollapseRvBean> {
+
+        val data = ArrayList<CollapseRvBean>()
+        obtainCollapseRvBean("test1", 3, false, 3, 1)?.let { data.add(it) }
+        obtainCollapseRvBean("test2", 3, true, 2, 1)?.let { data.add(it) }
+        obtainCollapseRvBean("test3", 3, false, 2, 1)?.let { data.add(it) }
+        return data
     }
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_view_demo, container, false)
+//    }
 
     companion object {
         /**

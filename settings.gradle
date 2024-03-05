@@ -2,3 +2,4 @@ rootProject.name = "playAndroid"
 include ':app'
 include ':mylibrary'
 include ':libKotlin'
+include ':testlib'

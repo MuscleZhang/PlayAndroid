@@ -39,11 +39,11 @@ class KitMainFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_kit_main, container, false)
         var textView = view.findViewById<TextView>(R.id.tv_view)
-//        textView.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_kitMainFragment_to_viewDemoFragment)
-//
-//        }
-        textView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_kitMainFragment_to_viewDemoFragment))
+        textView.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_kitMainFragment_to_viewDemoFragment)
+
+        }
+//        textView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_kitMainFragment_to_baseCollapseItemRvFragment))
         return view
     }
 

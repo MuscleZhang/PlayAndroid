@@ -14,10 +14,18 @@
             android:id="@+id/action_kitMainFragment_to_viewDemoFragment"
             app:destination="@id/viewDemoFragment"
             app:enterAnim="@anim/adv_trans_in" />
+<!--        <action-->
+<!--            android:id="@+id/action_kitMainFragment_to_baseCollapseItemRvFragment"-->
+<!--            app:destination="@id/baseCollapseItemRvFragment" />-->
     </fragment>
     <fragment
         android:id="@+id/viewDemoFragment"
         android:name="com.zjj.playandroid.kit.fragment.ViewDemoFragment"
         android:label="fragment_view_demo"
         tools:layout="@layout/fragment_view_demo" />
+    <fragment
+        android:id="@+id/baseCollapseItemRvFragment"
+        android:name="com.zjj.playandroid.kit.fragment.BaseCollapseItemRvFragment"
+        android:label="BaseCollapseItemRvFragment" />
+
 </navigation>

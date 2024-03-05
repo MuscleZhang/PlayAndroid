@@ -49,8 +49,13 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
         // 无障碍方案还是存在部分页面无法显示问题
 //        if (PermissionUtil.requestAccessibilityPermission(this, FloatWindowService::class.java)) {
-        FlowWindowManager.addToolView(this)
+//        FlowWindowManager.addToolView(this)
 //        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        FlowWindowManager.addToolView(this)
     }
 
     override fun onRequestPermissionsResult(
