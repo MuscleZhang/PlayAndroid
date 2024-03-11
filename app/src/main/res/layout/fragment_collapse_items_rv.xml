@@ -16,7 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ItemFragment"
-        tools:listitem="@layout/fragment_item" />
+        tools:listitem="@layout/item_collapse_rv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

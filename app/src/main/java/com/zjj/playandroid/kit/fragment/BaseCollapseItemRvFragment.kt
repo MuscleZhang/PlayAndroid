@@ -13,7 +13,7 @@ import com.zjj.playandroid.kit.bean.CollapseRvBean
 
 
 /**
- *
+ * 知识点 通用可展开列表
  *
  * @author zhangjiajun
  * @since 2024/2/26
@@ -42,6 +42,7 @@ open class BaseCollapseItemRvFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        val a = 1
         adapter.setData(getData())
     }
 
