@@ -15,6 +15,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.zjj.playandroid.MovieDetailHostActivity
 import com.zjj.playandroid.R
 import com.zjj.playandroid.databinding.FragmentKnowledgeBinding
 import com.zjj.playandroid.service.FloatWindowService
@@ -45,6 +46,11 @@ class KnowledgeFragment : Fragment() {
         binding.btnClick.setOnClickListener {
 //            activity?.startService(Intent(activity, FloatWindowService::class.java))
 //            addToolView()
+            val intent = Intent(context, MovieDetailHostActivity::class.java)
+            startActivity(intent)
+
+
+
 
         }
         btnClick.text = "clicktext"

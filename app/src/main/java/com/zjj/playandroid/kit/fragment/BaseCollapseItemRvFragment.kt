@@ -66,9 +66,9 @@ open class BaseCollapseItemRvFragment : Fragment() {
                 childList.add(it)
             }
         }
-        return CollapseRvBean(name, View.OnClickListener {
+        return CollapseRvBean(name, depth, isExpanded, View.OnClickListener {
             Toast.makeText(context, "click", Toast.LENGTH_SHORT).show()
-        }, childList, depth, isExpanded)
+        }, childList)
 
     }
 }

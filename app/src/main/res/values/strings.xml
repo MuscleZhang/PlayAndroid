@@ -6,4 +6,7 @@
     <string name="title_knowledge">知识点</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_movie_detail_host">MovieDetailHostActivity</string>
+    <string name="title_movie_list">Movies</string>
+    <string name="title_movie_detail">Movie Detail</string>
 </resources>

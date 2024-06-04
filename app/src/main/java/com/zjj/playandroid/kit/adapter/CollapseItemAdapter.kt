@@ -48,8 +48,11 @@ class CollapseItemAdapter() :
         data.forEach {
             newList.add(it)
             // 如果当前节点是展开状态，则将当前节点下的所有子节点全部添加到列表中
-            if (it.isExpanded && it.childList.isNotEmpty()) {
-                initData(it.childList, newList)
+            it.childList?.let {
+                childList ->
+                if (it.isExpanded && childList.isNotEmpty()) {
+                    initData(childList, newList)
+                }
             }
         }
     }
@@ -67,7 +70,7 @@ class CollapseItemAdapter() :
         holder.preBlankView.layoutParams.width = bean.depth * 32
         holder.iconView.setImageResource(if (bean.isExpanded) R.drawable.ic_collapse else R.drawable.ic_expand)
         holder.rootView.setOnClickListener {
-            if (bean.childList.isNotEmpty()) {
+            if (bean.childList?.isNotEmpty() == true) {
                 if (bean.isExpanded) {
                     bean.isExpanded = false
                     collapseItem(position, bean)
@@ -78,7 +81,7 @@ class CollapseItemAdapter() :
                 holder.iconView.setImageResource(if (bean.isExpanded) R.drawable.ic_collapse else R.drawable.ic_expand)
             } else {
                 holder.iconView.visibility = View.GONE
-                bean.onClick.onClick(it)
+                bean.onClick?.onClick(it)
             }
         }
     }
@@ -94,13 +97,18 @@ class CollapseItemAdapter() :
         curItem: CollapseRvBean,
         listToAdd: ArrayList<CollapseRvBean>
     ) {
-        if (curItem.childList.isNotEmpty()) {
-            curItem.childList.forEach {
-                listToAdd.add(it)
-                if (it.isExpanded && it.childList.isNotEmpty()) {
-                    addChildToList(it, listToAdd)
+        curItem.childList?.let {
+            childList ->
+
+            if (childList.isNotEmpty()) {
+                childList.forEach {
+                    listToAdd.add(it)
+                    if (it.isExpanded && it.childList?.isNotEmpty() == true) {
+                        addChildToList(it, listToAdd)
+                    }
                 }
             }
+
         }
     }
 
@@ -115,9 +123,9 @@ class CollapseItemAdapter() :
 
     private fun getListToRemove(curItem: CollapseRvBean): ArrayList<CollapseRvBean> {
         val list = ArrayList<CollapseRvBean>()
-        curItem.childList.forEach {
+        curItem.childList?.forEach {
             list.add(it)
-            if (it.isExpanded && it.childList.isNotEmpty()) {
+            if (it.isExpanded && (it.childList?.isNotEmpty() == true)) {
                 list.addAll(getListToRemove(it))
             }
         }
