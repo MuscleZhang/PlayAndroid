@@ -46,8 +46,8 @@ class KnowledgeFragment : Fragment() {
         binding.btnClick.setOnClickListener {
 //            activity?.startService(Intent(activity, FloatWindowService::class.java))
 //            addToolView()
-            val intent = Intent(context, MovieDetailHostActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(context, MovieDetailHostActivity::class.java)
+//            startActivity(intent)
 
 
 

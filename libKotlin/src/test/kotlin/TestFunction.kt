@@ -19,7 +19,18 @@ class TestFunction {
 
     @Test
     fun testFuncs() {
-        print(" run:  ${Functions().doRun()}")
-        print(" apply:  ${Functions().doApply()}")
+        println(" run:  ${Functions().doRun()}")
+        println(" apply:  ${Functions().doApply()}")
+        println("let: ${Functions().doLet()}")
+        println(" also: ${Functions().doAlso()}")
+    }
+
+    @Test
+    fun testExtendFun() {
+        var list = listOf("a1","a2","a3","b4","a5","b6")
+        var result = list.filter {
+            it.startsWith("a")
+        }
+        println(result.toString())
     }
 }
