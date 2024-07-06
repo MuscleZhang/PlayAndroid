@@ -15,5 +15,9 @@ class TestCollections {
     fun testMapList() {
         Collections().mapList()
     }
+    @Test
+    fun testFilter() {
+        Collections().filterArr()
+    }
 
 }

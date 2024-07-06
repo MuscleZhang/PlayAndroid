@@ -83,4 +83,39 @@ class Collections {
 
 
     }
+    /**
+     * 过滤函数 filter()
+     * 根据传入的筛选条件，对list进行筛选， 返回最终符合条件的元素集合
+     *
+     * filterIndexed()
+     * 根据index和条件一起进行筛选
+     */
+    fun filterArr() {
+        var list = listOf(Student("Andy", 13,70),
+            Student("Bird", 23,90),Student("Carry", 17,100),Student("Demon", 30,50))
+        println(list.filter { it.age > 20 })
+    }
+
+    data class Student(var name: String, var age: Int, var score: Int) {
+        override fun toString(): String {
+            return "Student(name: $name, age: $age, score:$score)"
+        }
+    }
+
+    /**
+     *
+     *
+     * 集合倒序 - 支持list, set
+     * reversed() 底层实现是直接通过实现java的reverse()
+     *
+     * 升序排序 - 支持list, set
+     * sorted() 底层实现是通过实现java的 sort()
+     *
+     * 元素去重
+     * distinct()
+     *
+     * 其他相关集合方法查看
+     * https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/
+     *
+     */
 }

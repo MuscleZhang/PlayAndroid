@@ -1,5 +1,7 @@
 package com.zjj.testlib;
 
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -11,13 +13,40 @@ import java.util.Locale;
 public class MyClass {
 
     public static void main(String[] args) {
+        // 逆变
+//        List<? super Number> l1 = new ArrayList<Object>();
+//        l1.add(1);
+//        Object a = l1.get(1);
+
+        // 协变
+//        Integer[] ints = new Integer[2];
+//        ints[0] = 1;
+//        ints[1] = 2;
+//        Number[] numbers = new Number[2];
+//        numbers = ints;
+
+        // 协变 & 泛型通配符 ? extends T类型的集合不能放T的子类, 只能放null
+        List<? extends Number> l1 = new ArrayList<>();
+//        List<? extends Number> l2 = new ArrayList<>();
+//        List<? extends Number> l3 = new ArrayList<Integer>();
+//        List<? extends Number> l4 = new ArrayList<Float>();
+//        List<Float> l5 = new ArrayList<>();
+//        List<Number> l6 = new ArrayList<>();
+//        l1 = l5;
+//        l6.add(1);
+//        l6.add(3.5f);
+
+
+////        l1.add(new Integer(1)); // error
+////        l3.add(1); // error
+//        l1.add(null);
 
         // 数组为null场景， 循环
-        List<String> arr = new ArrayList<>();
-        arr = null;
-        for (String s : arr) {
-            System.out.println(s);
-        }
+//        List<String> arr = new ArrayList<>();
+//        arr = null;
+//        for (String s : arr) {
+//            System.out.println(s);
+//        }
         // 闹钟权限
 
 //        for (int i = 0; i < 10; i++) {

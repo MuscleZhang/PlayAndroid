@@ -106,8 +106,27 @@ object MyClassAndConstructor {
             // 调用ProjectService2.print()
             super<ProjectService2>.print()
         }
+    }
 
+    /**
+     * 通过匿名内部类 实现接口
+     */
+    fun invokeImpl() {
+        var a = object : ProjectService {
+            override var name: String
+                get() = "name"
+                set(value) {}
+            override var owner: String
+                get() = "owner"
+                set(value) {}
 
+            override fun save() {
+            }
+
+            override fun print() {
+                super.print()
+            }
+        }
     }
 
     /**
