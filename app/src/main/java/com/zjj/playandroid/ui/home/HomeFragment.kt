@@ -1,6 +1,8 @@
 package com.zjj.playandroid.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +21,51 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("zjj", "home fragment onCreate")
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("zjj", "home fragment onAttach")
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        Log.d("zjj", "home fragment onActivityCreated")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("zjj", "home fragment onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("zjj", "home fragment onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("zjj", "home fragment onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("zjj", "home fragment onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("zjj", "home fragment onDestroy")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("zjj", "home fragment onDetach")
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,6 +103,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("zjj", "home fragment onDestroyView")
         _binding = null
     }
 }

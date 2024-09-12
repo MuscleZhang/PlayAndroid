@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("zjj", "activity onCreate")
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -55,7 +56,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("zjj", "activity onResume")
         FlowWindowManager.addToolView(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("zjj", "activity onStart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("zjj", "activity onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("zjj", "activity onStop")
     }
 
     override fun onRequestPermissionsResult(

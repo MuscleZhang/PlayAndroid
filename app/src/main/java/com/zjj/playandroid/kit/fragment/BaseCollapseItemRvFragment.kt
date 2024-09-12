@@ -40,6 +40,10 @@ open class BaseCollapseItemRvFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onResume() {
         super.onResume()
         val a = 1
