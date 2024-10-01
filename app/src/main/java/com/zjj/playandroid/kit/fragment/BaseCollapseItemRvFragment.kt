@@ -66,7 +66,7 @@ open class BaseCollapseItemRvFragment : Fragment() {
         }
         val childList = ArrayList<CollapseRvBean>()
         for (i in 1..childCount) {
-            obtainCollapseRvBean("$name - $i", 3, true, deep - 1, depth + 1)?.let {
+            obtainCollapseRvBean("$name - $i", childCount, true, deep - 1, depth + 1)?.let {
                 childList.add(it)
             }
         }

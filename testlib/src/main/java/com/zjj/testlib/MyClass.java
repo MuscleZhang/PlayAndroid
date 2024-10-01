@@ -179,11 +179,11 @@ public class MyClass {
     }
 
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
-        map.put(null, null);
-        PhantomReference<String> a = new PhantomReference<>();
-        a.get();
-        System.out.println(map.get(null));
+//        Map<String, String> map = new HashMap<>();
+//        map.put(null, null);
+//        PhantomReference<String> a = new PhantomReference<>();
+//        a.get();
+//        System.out.println(map.get(null));
 //        ListNode head = new ListNode(1);
 //        ListNode node1 = new ListNode(4);
 //        ListNode node2 = new ListNode(3);

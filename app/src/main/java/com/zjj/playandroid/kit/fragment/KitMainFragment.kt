@@ -53,17 +53,10 @@ class KitMainFragment : BaseCollapseItemRvFragment() {
 //    }
 
     override fun getData(): ArrayList<CollapseRvBean> {
-
         val data = ArrayList<CollapseRvBean>()
         val bean = CollapseRvBean("计算器")
-        bean.depth = 1
-        val coculatorList = ArrayList<CollapseRvBean>()
-        val coculatorBean = CollapseRvBean("检测闰年")
-
-        coculatorBean.depth = 2
-        coculatorBean.onClick = View.OnClickListener {
+        bean.addChild("检测闰年", View.OnClickListener {
             activity?.let { it1 ->
-
                 var root = DialogEditTextBinding.inflate(layoutInflater).root
                 root.inputType = EditorInfo.TYPE_CLASS_NUMBER
 
@@ -77,12 +70,8 @@ class KitMainFragment : BaseCollapseItemRvFragment() {
                     .create().show()
 
             }
-
-        }
-        coculatorList.add(coculatorBean)
-        bean.childList = coculatorList
+        })
         data.add(bean)
-
         return data
     }
 

@@ -39,6 +39,7 @@
         <activity
             android:name=".kit.KitActivity"
             android:process=":kit"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <service
